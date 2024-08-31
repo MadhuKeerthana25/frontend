@@ -1,0 +1,32 @@
+<div class="form-container">
+    <h3>{{ editIndex !== null ? 'Edit Item' : 'Add Item' }}</h3>
+  
+    <form #itemForm="ngForm" (ngSubmit)="saveItem(itemForm)">
+  
+      <label>Name:</label>
+      <input [(ngModel)]="name" name="name" type="text" placeholder="Enter name" required>
+  
+      <label>Date of Birth:</label>
+      <input [(ngModel)]="dob" name="dob" type="date" required>
+  
+      <label>Gender:</label>
+      <label><input [(ngModel)]="gender" name="gender" type="radio" value="Male" required> Male</label>
+      <label><input [(ngModel)]="gender" name="gender" type="radio" value="Female" required> Female</label>
+      <label><input [(ngModel)]="gender" name="gender" type="radio" value="Other" required> Other</label>
+  
+      <label>Email:</label>
+      <input [(ngModel)]="email" name="email" type="email" placeholder="Enter email" required>
+  
+      <div *ngFor="let phone of phoneNumber; let i = index">
+        <label>Phone Number {{ i + 1 }}:</label>
+        <input [(ngModel)]="phoneNumber[i]" name="phoneNumber{{i}}" type="text" placeholder="Enter phone number" required>
+        <button (click)="removePhoneNumberField(i)" *ngIf="phoneNumber.length > 1">Remove</button>
+      </div>
+  
+      <button (click)="addPhoneNumberField()">Add Phone Number</button>
+  
+      <button type="submit" class="save-btn">Save</button>
+  
+    </form>
+  </div>
+  
