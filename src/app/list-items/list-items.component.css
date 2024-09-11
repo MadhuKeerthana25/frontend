@@ -1,62 +1,85 @@
-.css 
+/* General list container styling */
 .list-container {
-  background-color: #f1f1f1;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  max-width: 600px;
-  margin: 20px auto;
-}
-
-h3 {
-  color: black;
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 20px;
-}
-
-th, td {
-  padding: 10px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
-}
-
-th {
-  background-color: black;
+  background: linear-gradient(to right, #462ecc, #2980b9);
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+  max-width: 700px;
+  margin: 30px auto;
+  font-family: 'Arial', sans-serif;
   color: white;
 }
 
-tr:hover {
-  background-color: #f5f5f5;
+/* Header styling */
+h3 {
+  color: white;
+  text-align: center;
+  margin-bottom: 24px;
+  font-size: 24px;
+  font-weight: 700;
 }
 
+/* Table styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 24px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #555;
+  font-size: 14px;
+  color: white;
+}
+
+th {
+  background-color: #333;
+  color: white;
+  font-weight: 600;
+}
+
+tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+tr:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transition: background-color 0.3s ease;
+}
+
+/* Button styling */
 button {
-  padding: 5px 10px;
-  border-radius: 4px;
+  padding: 8px 16px;
+  border-radius: 6px;
   border: none;
   cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .edit-button {
-  background-color: black;
+  background-color: #3498db;
   color: white;
 }
 
 .edit-button:hover {
-  background-color: black;
+  background-color: #2980b9;
+  transform: scale(1.05);
 }
 
 .delete-button {
-  background-color: #f44336;
+  background-color: #e74c3c;
   color: white;
-  margin-left: 10px;
+  margin-left: 12px;
 }
 
 .delete-button:hover {
-  background-color: #e53935;
+  background-color: #c0392b;
+  transform: scale(1.05);
 }

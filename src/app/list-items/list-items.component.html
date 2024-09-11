@@ -33,8 +33,14 @@
             </ul>
           </td>
           <td>
-            <button (click)="editItem(i)" class="edit-button">Edit</button>
-            <button (click)="deleteItem(i)" class="delete-button">Delete</button>
+            <!-- <button (click)="editItem(i)" class="edit-button">Edit</button> -->
+            <button (click)="editItem(i)" class="icon-button edit-button">
+              <i class="fas fa-pencil-alt"></i>
+            </button>
+            <!-- <button (click)="deleteItem(i)" class="delete-button">Delete</button> -->
+            <button (click)="deleteItem(i)" class="icon-button delete-button">
+              <i class="fas fa-trash-alt"></i>
+            </button>
           </td>
         </tr>
       </tbody>

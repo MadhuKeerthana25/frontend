@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { DataService } from '../data.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ItemService } from '../item.service';
 
 @Component({
   selector: 'app-list-items',
@@ -16,11 +17,21 @@ export class ListItemsComponent implements OnInit {
   filteredItems: { name: string; dob: string; gender: string; email: string; phoneNumber: string[] }[] = [];
   searchTerm: string = '';
 
-  constructor(private dataService: DataService, private router: Router) {}
+  constructor(private dataService: DataService, private router: Router, private itemService: ItemService) {}
 
 
   async ngOnInit(): Promise<void> {
-    this.items = await this.dataService.getItems();
+    // this.items = await this.dataService.getItems();
+    await this.itemService.getItems().subscribe(items => {
+      // this.items = items;
+      this.items = items.map(item => ({
+        name: item.name,
+        dob: item.dateOfBirth,
+        gender: item.gender,
+        email: item.emailId,
+        phoneNumber: item.phoneNumbers.map(itemNumber => itemNumber.number)
+      }))
+    });
     this.filteredItems = this.items; // Initially show all items
   }
 

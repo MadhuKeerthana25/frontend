@@ -1,1 +1,46 @@
-/* You can add global styles to this file, and also import other style files */
+/* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #14141c; /* Apply a darker global background */
+    color: #ecf0f1;
+    min-height: 100vh;
+  }
+  
+  /* Header Styling */
+  h1 {
+    color: #9b59b6;
+    text-align: center;
+    margin-top: 0;
+    font-size: 36px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  /* Paragraph Styling */
+  p {
+    font-size: 18px;
+    text-align: center;
+    margin: 20px 0;
+  }
+  
+  /* Footer Styling */
+  footer {
+    background-color: #333;
+    padding: 10px;
+    text-align: center;
+    color: #bdc3c7;
+    font-size: 14px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  /* Container Styles */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
