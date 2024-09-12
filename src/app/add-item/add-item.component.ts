@@ -6,6 +6,7 @@ import { NgForm } from '@angular/forms'; // Import NgForm
 import { Item } from '../models/item.model';
 import { AlertService } from '../alert.service';
 import { PhoneNumber } from '../models/phone-number.model';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-add-item',
@@ -21,7 +22,7 @@ export class AddItemComponent implements OnInit {
   phoneNumber: string[] = [''];
   editIndex: number | null = null;
 
-  constructor(private dataService: DataService, private router: Router, private route: ActivatedRoute, private itemService: ItemService, private alertService: AlertService) {}
+  constructor(private dataService: DataService,public authService: AuthService, private router: Router, private route: ActivatedRoute, private itemService: ItemService, private alertService: AlertService) {}
 
   async ngOnInit(): Promise<void> {
     this.route.queryParams.subscribe(async params => {
