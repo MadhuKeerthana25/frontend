@@ -9,7 +9,7 @@ import { environment } from '../environments/environment';
 })
 export class ItemService {
   private apiUrl = `${environment.apiBaseUrl}/items`;
-
+  private token = `${localStorage.getItem('token')}`;
 
   constructor(private http: HttpClient) {}
 
@@ -37,10 +37,11 @@ export class ItemService {
   private getHeaders() {
     return {
       headers: new HttpHeaders({
+        'Authorization': `Bearer ${this.token}`,
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': 'http://localhost:4200',
-        'Access-Control-Allow-Methods' : 'GET, POST, PUT, DELETE',
-        'Access-Control-Allow-Headers' : 'Content-Type, Authorization'
+        // 'Access-Control-Allow-Origin': 'http://localhost:4200',
+        // 'Access-Control-Allow-Methods' : 'GET, POST, PUT, DELETE, OPTIONS',
+        // 'Access-Control-Allow-Headers' : 'Content-Type, Authorization'
       }),
     };
   }

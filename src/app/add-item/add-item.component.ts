@@ -94,6 +94,7 @@ export class AddItemComponent implements OnInit {
     
     console.log('Submitting item:', item); 
 
+    if (this.authService.hasRole('ADMIN')) {
     try {
       if (this.editIndex !== null && this.editIndex >= 0) {
         console.log('Updating item at index:', this.editIndex);
@@ -122,7 +123,11 @@ export class AddItemComponent implements OnInit {
         console.log('Item created successfully');
       }
       this.router.navigate(['/list-items']);
-    } catch (error: unknown) {
+    }
+    
+    
+    
+    catch (error: unknown) {
       if (error instanceof Error) {
         console.error('Error occurred:', error.message)
         this.alertService.error(error.message); 
@@ -131,7 +136,8 @@ export class AddItemComponent implements OnInit {
         this.alertService.error('An unknown error occurred.'); 
       }
     }
+  } else {
+    this.alertService.error('Access denied.');
   }
 }
-
-
+}
