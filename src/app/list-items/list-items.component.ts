@@ -62,6 +62,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from '../data.service';
 import { ItemService } from '../item.service';
+import { Item } from '../models/item.model';
 
 @Component({
   selector: 'app-list-items',
@@ -70,15 +71,19 @@ import { ItemService } from '../item.service';
 })
 export class ListItemsComponent implements OnInit {
 
-  items: { name: string; dob: string; gender: string; email: string; phoneNumber: string[] }[] = [];
-  filteredItems: { name: string; dob: string; gender: string; email: string; phoneNumber: string[] }[] = [];
+  items: {id?: number; name: string; dob: string; gender: string; email: string; phoneNumber: string[] }[] = [];
+  filteredItems: {id?: number; name: string; dob: string; gender: string; email: string; phoneNumber: string[] }[] = [];
   searchTerm: string = '';
+ 
+  //  items: Item[] =[];
+ 
 
   constructor(private dataService: DataService, private router: Router, private itemService: ItemService) {}
 
   ngOnInit(): void {
     this.itemService.getItems().subscribe(items => {
       this.items = items.map(item => ({
+        id: item.id,
         name: item.name,
         dob: item.dateOfBirth,
         gender: item.gender,
@@ -97,6 +102,7 @@ export class ListItemsComponent implements OnInit {
     await this.dataService.deleteItem(index);
     this.itemService.getItems().subscribe(items => {
       this.items = items.map(item => ({
+        id: item.id,
         name: item.name,
         dob: item.dateOfBirth,
         gender: item.gender,

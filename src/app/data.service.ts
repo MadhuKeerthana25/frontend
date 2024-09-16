@@ -35,8 +35,8 @@ export class DataService {
   // getItems(): Promise<{ name: string; dob: string; gender: string; email: string; phoneNumber: string[] }[]> {
   //   return Promise.resolve(this.items);
   // }
-  getItems(): Observable<{ name: string; dob: string; gender: string; email: string; phoneNumber: string[] }[]> {
-    return this.http.get<{ name: string; dob: string; gender: string; email: string; phoneNumber: string[] }[]>(`${this.apiUrl}/getAllItems`);
+  getItems(): Observable<{ id: string; name: string; dob: string; gender: string; email: string; phoneNumber: string[] }[]> {
+    return this.http.get<{ id: string; name: string; dob: string; gender: string; email: string; phoneNumber: string[] }[]>(`${this.apiUrl}/getAllItems`);
   }
   
 
@@ -64,6 +64,13 @@ export class DataService {
       );
   }
 
+  // async updateItem(index: number, item: { name: string; dob: string; gender: string; email: string; phoneNumber: string[] }): Promise<void> {
+  //   if (this.isEmailDuplicate(item.email, index)) {
+  //     throw new Error('An item with this email already exists.');
+  //   }
+  //   this.items[index] = item;
+  //   return Promise.resolve();
+  // }
   async updateItem(index: number, item: { name: string; dob: string; gender: string; email: string; phoneNumber: string[] }): Promise<void> {
     if (this.isEmailDuplicate(item.email, index)) {
       throw new Error('An item with this email already exists.');
@@ -71,6 +78,7 @@ export class DataService {
     this.items[index] = item;
     return Promise.resolve();
   }
+  
 
   deleteItem(index: number): Promise<void> {
     this.items.splice(index, 1);
