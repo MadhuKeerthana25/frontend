@@ -1,4 +1,4 @@
-/* General form container styling */
+ /* General form container styling */
 .form-container {
   max-width: 600px;
   margin: 40px auto;
@@ -11,7 +11,7 @@
   color: white;
 }
 
-/* Form field labels */
+
 .form-container label {
   display: block;
   margin-bottom: 10px;
@@ -19,7 +19,7 @@
   font-size: 14px;
 }
 
-/* Form input fields */
+
 .form-container input[type="text"],
 .form-container input[type="date"],
 .form-container input[type="email"],
@@ -44,12 +44,12 @@
   outline: none;
 }
 
-/* Radio buttons */
+
 .form-container input[type="radio"] {
   margin-right: 8px;
 }
 
-/* Phone number fields */
+
 .phone-number-group {
   display: flex;
   align-items: center;
@@ -75,7 +75,7 @@
   transform: scale(1.05);
 }
 
-/* Add phone number button */
+
 .add-phone-number-btn {
   margin-bottom: 18px;
   padding: 12px 24px;
@@ -93,7 +93,7 @@
   transform: scale(1.05);
 }
 
-/* Save button */
+
 .save-btn {
   width: 100%;
   padding: 14px;
@@ -111,7 +111,7 @@
   transform: scale(1.05);
 }
 
-/* Form title */
+
 .form-container h2 {
   text-align: center;
   margin-bottom: 24px;
@@ -119,7 +119,7 @@
   font-weight: 700;
 }
 
-/* Responsive adjustments */
+
 @media (max-width: 600px) {
   .form-container {
     margin: 20px;
@@ -129,4 +129,5 @@
   .save-btn {
     font-size: 16px;
   }
-}
+} 
+

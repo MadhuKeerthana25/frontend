@@ -9,6 +9,7 @@ import { tap } from 'rxjs/operators';
 export class AuthService {
   private tokenSubject: BehaviorSubject<string | null> = new BehaviorSubject<string | null>(null);
 
+
   constructor(private http: HttpClient) {
     const token = localStorage.getItem('token');
     this.tokenSubject.next(token);
@@ -59,4 +60,8 @@ export class AuthService {
     localStorage.removeItem('token');
     this.tokenSubject.next(null);
   }
+  // logout() {
+  //   this.authService.logout();  // Remove the token and update the subject
+  //   this.router.navigate(['/login']);  // Redirect to login page
+  // }
 }

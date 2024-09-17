@@ -13,6 +13,9 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { AlertComponent } from './alert/alert.component';
 import { JwtInterceptor } from '@auth0/angular-jwt';
+import { CreateAdminComponent } from './create-admin/create-admin.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,10 @@ import { JwtInterceptor } from '@auth0/angular-jwt';
     WelcomeComponent,
     LoginComponent,
     SignupComponent,
-    AlertComponent
+    AlertComponent,
+    CreateAdminComponent,
+    AdminDashboardComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,

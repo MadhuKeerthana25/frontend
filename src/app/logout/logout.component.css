@@ -1,0 +1,32 @@
+.logout-container {
+    display: flex;
+    justify-content: flex-end; /* Align items to the right */
+    padding: 1rem;
+    background: #080808;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 100%; /* Make sure container takes full width */
+    box-sizing: border-box; /* Include padding in width */
+}
+
+.logout-message {
+    color: #800080;
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.logout-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.2rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    text-align: center;
+    margin-left: 1rem; /* Space between message and button */
+}
+
+.logout-button:hover {
+    background-color: #0056b3; /* Darker shade for hover effect */
+}

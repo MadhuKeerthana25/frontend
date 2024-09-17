@@ -1,0 +1,16 @@
+<form (ngSubmit)="onCreateAdmin()" #createAdminForm="ngForm">
+    <div>
+      <label for="username">Username:</label>
+      <input type="text" id="username" required [(ngModel)]="username" name="username">
+    </div>
+    <div>
+      <label for="password">Password:</label>
+      <input type="password" id="password" required [(ngModel)]="password" name="password">
+    </div>
+    <div>
+      <label for="roles">Roles (comma-separated):</label>
+      <input type="text" id="roles" required [(ngModel)]="rolesString" name="roles">
+    </div>
+    <button type="submit" [disabled]="!createAdminForm.form.valid">Create Admin</button>
+  </form>
+  

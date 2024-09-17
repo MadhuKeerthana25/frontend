@@ -7,6 +7,8 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { AuthGuard } from './auth.guard';
 import { RoleGuard } from './role.guard';
+import { LogoutComponent } from './logout/logout.component';
+import { CreateAdminComponent } from './create-admin/create-admin.component';
 
 const routes: Routes = [
   { path: 'welcome', component: WelcomeComponent, canActivate: [AuthGuard] },
@@ -14,6 +16,8 @@ const routes: Routes = [
   { path: 'list-items', component: ListItemsComponent, canActivate: [RoleGuard], data: { roles: ['ADMIN', 'USER'] } },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
+  { path: 'logout', component: LogoutComponent },
+  { path: 'create-admin', component: CreateAdminComponent, canActivate: [RoleGuard], data: { roles: ['ADMIN'] } },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   // Lazy loading with AuthGuard protection
   {

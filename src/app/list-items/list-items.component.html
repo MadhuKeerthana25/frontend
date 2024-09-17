@@ -1,3 +1,4 @@
+<app-header></app-header>
 <div class="list-container">
     <h3>Items</h3>
   
@@ -45,5 +46,10 @@
         </tr>
       </tbody>
     </table>
+    <div class="pagination">
+      <button (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 1">Previous</button>
+      <span>Page {{ currentPage }} of {{ totalPages }}</span>
+      <button (click)="goToPage(currentPage + 1)" [disabled]="currentPage === totalPages">Next</button>
+    </div>
   </div>
   
