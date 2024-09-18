@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: 'logout', component: LogoutComponent },
   { path: 'create-admin', component: CreateAdminComponent, canActivate: [RoleGuard], data: { roles: ['ADMIN'] } },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
-  // Lazy loading with AuthGuard protection
+  // Lazy loading with AuthGuard protection-
   {
     path: 'employee',
     loadChildren: () =>

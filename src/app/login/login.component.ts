@@ -14,22 +14,7 @@ export class LoginComponent {
 
   constructor(private router: Router, private authService: AuthService, private alertService: AlertService) {}
 
-  // onLogin() {
-  //   this.authService.login(this.username, this.password).subscribe(
-  //     () => {
-        
-  //       console.log('Login successful');
-  //       // Redirect to the add-item page upon successful login
-  //       this.router.navigate(['/add-item', '/list-item']);
-  //     },
-  //     (error) => {
-  //       console.error('Login failed', error);
-  //       // Display an error message
-  //       this.alertService.error('Invalid username or password');
-  //     }
-  //   );
-    
-  // }
+
   onLogin() {
     this.authService.login(this.username, this.password).subscribe(
       () => {
