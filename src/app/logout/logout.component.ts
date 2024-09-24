@@ -8,11 +8,10 @@ import { AuthService } from '../auth.service'; // Adjust the path as necessary
   styleUrls: ['./logout.component.css']
 })
 export class LogoutComponent {
-  
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
-    this.logout();  
+    this.logout();
   }
 
   logout(): void {
