@@ -80,7 +80,7 @@ export class ItemService {
     return this.http.put<Item>(`${this.apiUrl}/updateItem/${id}`, item, this.getHeaders());
   }
 
-  deleteItem(id: number): Observable<void> {
+  ddeleteItem(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/deleteItem/${id}`, this.getHeaders());
   }
 

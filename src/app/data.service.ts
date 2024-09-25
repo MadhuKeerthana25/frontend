@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, catchError, Observable, tap } from 'rxjs';
+import { BehaviorSubject, catchError, map, Observable, of, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -68,9 +68,28 @@ export class DataService {
   }
   
 
-  deleteItem(index: number): Promise<void> {
-    this.items.splice(index, 1);
-    return Promise.resolve();
+  deleteItem(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/deleteItem/${id}`, {
+      headers: this.getHeaders().headers,
+      observe: 'response' // This option allows us to observe the entire response.
+    }).pipe(
+      tap(() => this.fetchItems()), // Refresh the items list
+      catchError(error => {
+        console.error('Error deleting item', error);
+        return of(); // Return an observable with a void value
+      }),
+      map(() => {}) // Map the response to void
+    );
+  }
+
+  private getHeaders(): { headers: HttpHeaders } {
+    const token = localStorage.getItem('token') || '';
+    return {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      })
+    };
   }
 }
 

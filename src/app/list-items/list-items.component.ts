@@ -50,19 +50,26 @@ export class ListItemsComponent implements OnInit {
     this.router.navigate(['/add-item'], { queryParams: { index } });
   }
 
-  async deleteItem(index: number) {
-    await this.dataService.deleteItem(index);
-    this.itemService.getItems().subscribe(items => {
-      this.items = items.map(item => ({
-        id: item.id,
-        name: item.name,
-        dob: item.dateOfBirth,
-        gender: item.gender,
-        email: item.emailId,
-        phoneNumber: item.phoneNumbers.map(phoneNumber => phoneNumber.number)
-      }));
-      // this.filterItems(); // Refresh the filtered list
-      this.loadItems(); // Refresh the items list
+  // async deleteItem(index: number) {
+  //   await this.dataService.deleteItem(index);
+  //   this.itemService.getItems().subscribe(items => {
+  //     this.items = items.map(item => ({
+  //       id: item.id,
+  //       name: item.name,
+  //       dob: item.dateOfBirth,
+  //       gender: item.gender,
+  //       email: item.emailId,
+  //       phoneNumber: item.phoneNumbers.map(phoneNumber => phoneNumber.number)
+  //     }));
+  //     // this.filterItems(); // Refresh the filtered list
+  //     this.loadItems(); // Refresh the items list
+  //   });
+  // }
+
+  deleteItem(id: number) {
+    this.dataService.deleteItem(id).subscribe(() => {
+      // Handle any additional UI updates if necessary
+      console.log(`Item with id ${id} deleted.`);
     });
   }
 
