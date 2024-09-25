@@ -7,6 +7,20 @@ import { tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
+
+  private apiUrl = 'http://localhost:8080/api/user';
+
+  
+  getProfile(): Observable<any> {
+    const token = localStorage.getItem('token');
+    if (token) {
+      return this.http.get<any>(`${this.apiUrl}/profile`, {
+        headers: { 'Authorization': `Bearer ${token}` }
+      });
+    } else {
+      throw new Error('User is not logged in');
+    }
+  }
   private tokenSubject: BehaviorSubject<string | null> = new BehaviorSubject<string | null>(null);
 
   constructor(private http: HttpClient) {

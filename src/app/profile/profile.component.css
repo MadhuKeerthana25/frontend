@@ -1,0 +1,30 @@
+.profile-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 1rem;
+    background: #0d0d0d; /* Match the background color of the signup form */
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    color: #800080; /* Use the same purple color for text */
+  }
+  
+  .profile-container h2 {
+    text-align: center; /* Center the heading */
+    margin-bottom: 1rem;
+  }
+  
+  .profile-icon {
+    cursor: pointer; /* Change the cursor to pointer on hover */
+    font-size: 1.5rem; /* Adjust size of the profile icon */
+    margin-right: 1rem; /* Add spacing to the right of the icon */
+  }
+  
+  .profile-container p {
+    margin-bottom: 1rem; /* Space out the paragraphs */
+  }
+  
+  /* Optional: Add styles for hover effect on the profile icon */
+  .profile-icon:hover {
+    color: #007bff; /* Change color on hover */
+  }
+  

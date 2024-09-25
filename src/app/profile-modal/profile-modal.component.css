@@ -1,0 +1,36 @@
+.modal {
+    display: block; /* Show the modal */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  }
+  
+  .modal-content {
+    background-color: #0d0d0d; /* Match the background color of the signup form */
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+    width: 80%; /* Could be more or less, depending on screen size */
+    color: #ffffff; /* Set text color to white for contrast */
+  }
+  
+  .close {
+    color: #800080; /* Match the purple color used in signup */
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #ffffff; /* Change color on hover for visibility */
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
