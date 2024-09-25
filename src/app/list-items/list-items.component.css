@@ -124,3 +124,9 @@ button {
   margin: 0 10px;
 }
 
+.icon-button {
+  font-size: 18px; /* Adjust size as needed */
+  line-height: 1; /* Center the icon within the button */
+  padding: 5px; /* Adjust padding for better appearance */
+}
+
