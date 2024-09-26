@@ -50,21 +50,7 @@ export class ListItemsComponent implements OnInit {
     this.router.navigate(['/add-item'], { queryParams: { index } });
   }
 
-  // async deleteItem(index: number) {
-  //   await this.dataService.deleteItem(index);
-  //   this.itemService.getItems().subscribe(items => {
-  //     this.items = items.map(item => ({
-  //       id: item.id,
-  //       name: item.name,
-  //       dob: item.dateOfBirth,
-  //       gender: item.gender,
-  //       email: item.emailId,
-  //       phoneNumber: item.phoneNumbers.map(phoneNumber => phoneNumber.number)
-  //     }));
-  //     // this.filterItems(); // Refresh the filtered list
-  //     this.loadItems(); // Refresh the items list
-  //   });
-  // }
+
 
   deleteItem(id: number) {
     this.dataService.deleteItem(id).subscribe(() => {
@@ -73,15 +59,7 @@ export class ListItemsComponent implements OnInit {
     });
   }
 
-  // filterItems() {
-  //   this.filteredItems = this.items.filter(item => 
-  //     item.name.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-  //     item.dob.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-  //     item.gender.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-  //     item.email.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-  //     item.phoneNumber.some(phone => phone.toLowerCase().includes(this.searchTerm.toLowerCase()))
-  //   );
-  // }
+
 
   filterItems(): void {
     // Update filteredItems based on searchTerm and currentPage

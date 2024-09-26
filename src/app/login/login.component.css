@@ -1,4 +1,4 @@
-
+/* 
 
 form {
     max-width: 400px;
@@ -9,6 +9,76 @@ form {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+div {
+    margin-bottom: 1rem;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #800080; 
+}
+
+input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.2rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+button:disabled {
+    background-color: #c0c0c0;
+    cursor: not-allowed;
+}
+
+p {
+    text-align: center;
+    margin-top: 1rem;
+    color: #800080; 
+}
+
+a {
+    color: #800080; 
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+} */
+
+
+/* Ensure the body and html take full height */
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0; /* Optional background color */
+}
+
+/* Center the form container */
+form {
+    max-width: 400px;
+    width: 100%;
+    padding: 1rem;
+    background: #080808;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Styling individual elements inside the form */
 div {
     margin-bottom: 1rem;
 }
