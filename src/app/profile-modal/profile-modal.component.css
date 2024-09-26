@@ -11,13 +11,13 @@
   }
   
   .modal-content {
-    background-color: #0d0d0d; /* Match the background color of the signup form */
+    background-color: white; /* Match the background color of the signup form */
     margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
     border-radius: 8px; /* Rounded corners */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
     width: 80%; /* Could be more or less, depending on screen size */
-    color: #ffffff; /* Set text color to white for contrast */
+    color: black; /* Set text color to white for contrast */
   }
   
   .close {
