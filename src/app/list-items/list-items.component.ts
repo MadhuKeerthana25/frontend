@@ -47,8 +47,12 @@ export class ListItemsComponent implements OnInit {
   }
 
   editItem(id: number): void {
-    this.router.navigate(['/add-item'], { queryParams: { id } });
+    this.itemService.getItemById(id).subscribe(item => {
+      // Redirect to the AddItemComponent with the item details
+      this.router.navigate(['/add-item'], { queryParams: { id, item: JSON.stringify(item) } });
+    });
   }
+  
 
   deleteItem(id: number): void {
     this.dataService.deleteItem(id).subscribe(() => {
