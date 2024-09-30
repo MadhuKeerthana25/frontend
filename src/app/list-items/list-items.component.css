@@ -130,3 +130,18 @@ button {
   padding: 5px; /* Adjust padding for better appearance */
 }
 
+.download-excel-button {
+  padding: 10px;
+  margin-left: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.download-excel-button:hover {
+  background-color: #45a049;
+}
+
+

@@ -160,6 +160,7 @@ import { Router } from '@angular/router';
 import { DataService } from '../data.service';
 import { ItemService } from '../item.service';
 import { LoaderService } from '../loader.service';
+import * as XLSX from 'xlsx'; // Import xlsx library
 
 @Component({
   selector: 'app-list-items',
@@ -299,6 +300,18 @@ export class ListItemsComponent implements OnInit {
 
   get totalPages(): number {
     return Math.ceil(this.totalItems / this.itemsPerPage);
+  }
+
+  downloadExcel(): void {
+    const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(this.filteredItems.map(item => ({
+      Name: item.name,
+      'Date of Birth': item.dob,
+      Gender: item.gender,
+      Email: item.email,
+      'Phone Numbers': item.phoneNumber.join(', ')
+    })));
+    const workbook: XLSX.WorkBook = { Sheets: { 'Items': worksheet }, SheetNames: ['Items'] };
+    XLSX.writeFile(workbook, 'items_list.xlsx');
   }
 }
 
