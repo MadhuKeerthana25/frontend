@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { AlertService } from '../alert.service';
+import { LoaderService } from '../loader.service';
 
 @Component({
   selector: 'app-signup',
@@ -15,7 +16,7 @@ export class SignupComponent {
 
   private signupUrl = 'http://localhost:8080/auth/signup';
 
-  constructor(private router: Router, private http: HttpClient, private alertService: AlertService) {}
+  constructor(private router: Router, private http: HttpClient, private alertService: AlertService,  private loaderService: LoaderService ) {}
 
   // onSignup() {
   //   // Retrieve existing users from local storage
@@ -44,13 +45,15 @@ export class SignupComponent {
       password: this.password
     };
 
+    this.loaderService.show(); // Show loader
     this.http.post(this.signupUrl, signupData).subscribe(
       (response) => {
+        this.loaderService.hide(); // Hide loader
         this.alertService.success('Signup successful');
-        // Navigate to login page after successful signup
         this.router.navigate(['/login']);
       },
       (error) => {
+        this.loaderService.hide(); // Hide loader
         this.alertService.error('Signup failed: ' + error.message);
       }
     );

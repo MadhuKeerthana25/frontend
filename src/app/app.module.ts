@@ -18,6 +18,7 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
 import { LogoutComponent } from './logout/logout.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ProfileModalComponent } from './profile-modal/profile-modal.component';
+import { LoaderComponent } from './loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { ProfileModalComponent } from './profile-modal/profile-modal.component';
     AdminDashboardComponent,
     LogoutComponent,
     ProfileComponent,
-    ProfileModalComponent
+    ProfileModalComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,

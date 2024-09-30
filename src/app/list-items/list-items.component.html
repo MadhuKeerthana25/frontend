@@ -2,7 +2,7 @@
 <div class="list-container">
   <h3>Items</h3>
 
-  <!-- Search Input -->
+  
   <input
     type="text"
     [(ngModel)]="searchTerm"
@@ -11,7 +11,7 @@
     style="width: 100%; padding: 10px; margin-bottom: 20px; box-sizing: border-box;"
   />
 
-  <!-- Bulk Delete Button -->
+  
   <button (click)="deleteSelectedItems()" [disabled]="selectedItems.length === 0" class="bulk-delete-button">
     Delete Selected Items
   </button>
@@ -42,10 +42,10 @@
         </td>
         <td>
           <button *ngIf="item.id !== undefined" (click)="editItem(item.id)" class="icon-button edit-button" title="Edit">
-            ✎ <!-- Edit Symbol -->
+            ✎ 
           </button>
           <button *ngIf="item.id !== undefined" (click)="deleteItem(item.id)" class="icon-button delete-button" title="Delete">
-            🗑️ <!-- Delete Symbol -->
+            🗑️ 
           </button>
         </td>
       </tr>
@@ -58,3 +58,5 @@
     <button (click)="goToPage(currentPage + 1)" [disabled]="currentPage === totalPages">Next</button>
   </div>
 </div>
+
+

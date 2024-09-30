@@ -21,7 +21,7 @@
   }
   
   .close {
-    color: #800080; /* Match the purple color used in signup */
+    color: red; /* Match the purple color used in signup */
     float: right;
     font-size: 28px;
     font-weight: bold;
@@ -29,7 +29,7 @@
   
   .close:hover,
   .close:focus {
-    color: #ffffff; /* Change color on hover for visibility */
+    color: black; /* Change color on hover for visibility */
     text-decoration: none;
     cursor: pointer;
   }

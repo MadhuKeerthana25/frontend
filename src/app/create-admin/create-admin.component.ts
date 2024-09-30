@@ -83,6 +83,7 @@ import { AlertService } from '../alert.service';
 import { UserService } from '../user.service';
 import { catchError, switchMap, tap } from 'rxjs/operators';
 import { of } from 'rxjs';
+import { LoaderService } from '../loader.service';
 
 @Component({
   selector: 'app-create-admin',
@@ -100,7 +101,8 @@ export class CreateAdminComponent {
     private router: Router,
     private http: HttpClient,
     private alertService: AlertService,
-    private userService: UserService
+    private userService: UserService,
+    private loaderService: LoaderService 
   ) {}
 
   get rolesString(): string {
@@ -112,6 +114,7 @@ export class CreateAdminComponent {
   }
 
   onCreateAdmin() {
+    this.loaderService.show(); 
     this.userService.isAdmin().pipe(
       tap(isAdmin => {
         if (!isAdmin) {
@@ -135,6 +138,8 @@ export class CreateAdminComponent {
         this.alertService.error('Failed to create admin: ' + error.message);
         return of(null); // Returning an observable to complete the stream
       })
-    ).subscribe(); // No need to handle data here, it's already handled in tap
+    ).subscribe({
+      complete: () => this.loaderService.hide() 
+    }); // No need to handle data here, it's already handled in tap
   }
 }

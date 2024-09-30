@@ -6,6 +6,7 @@ import { AlertService } from '../alert.service';
 import { AuthService } from '../auth.service';
 import { UserService } from '../user.service'; // Import UserService
 import { Item } from '../models/item.model';
+import { LoaderService } from '../loader.service'; 
 
 @Component({
   selector: 'app-add-item',
@@ -27,7 +28,8 @@ export class AddItemComponent implements OnInit {
     private route: ActivatedRoute,
     private alertService: AlertService,
     public authService: AuthService,
-    private userService: UserService // Inject UserService
+    private userService: UserService, // Inject UserService
+    private loaderService: LoaderService
   ) {}
 
   async ngOnInit(): Promise<void> {
@@ -91,7 +93,9 @@ export class AddItemComponent implements OnInit {
   }
 
   async saveItem(form: NgForm) {
+    this.loaderService.show(); // Show loader
     if (form.invalid) {
+      this.loaderService.hide(); // Hide loader if invalid
       console.error('Form is invalid');
       this.alertService.error('Please fill out all fields correctly.');
       return;
@@ -129,6 +133,10 @@ export class AddItemComponent implements OnInit {
     } catch (error) {
       console.error('Error occurred:', error);
       this.alertService.error('An error occurred while saving the item.');
-    }
+    } finally {
+      this.loaderService.hide(); // Hide loader in finally block
+  }
   }
 }
+
+
