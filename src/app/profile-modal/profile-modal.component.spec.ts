@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientModule } from '@angular/common/http'; // Import HttpClientModule
 
 import { ProfileModalComponent } from './profile-modal.component';
 
@@ -8,7 +9,8 @@ describe('ProfileModalComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ProfileModalComponent]
+      declarations: [ProfileModalComponent],
+      imports: [HttpClientModule] // Add HttpClientModule here
     })
     .compileComponents();
 

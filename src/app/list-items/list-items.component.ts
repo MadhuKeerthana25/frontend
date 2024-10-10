@@ -161,6 +161,8 @@ import { DataService } from '../data.service';
 import { ItemService } from '../item.service';
 import { LoaderService } from '../loader.service';
 import * as XLSX from 'xlsx'; // Import xlsx library
+import jsPDF from 'jspdf'; // For PDF export
+import 'jspdf-autotable'; // For table formatting in PDF
 
 @Component({
   selector: 'app-list-items',
@@ -175,6 +177,9 @@ export class ListItemsComponent implements OnInit {
   itemsPerPage: number = 5;
   totalItems: number = 0;
   selectedItems: number[] = [];
+  
+  // New property to hold selected file format
+  selectedFormat: string = 'excel'; // Default format
 
   constructor(
     private dataService: DataService,
@@ -190,14 +195,14 @@ export class ListItemsComponent implements OnInit {
   loadItems(): void {
     this.loaderService.show(); // Show loader
     this.itemService.getItems().subscribe(items => {
-        this.items = items.map(this.mapItem);
-        this.totalItems = this.items.length;
-        this.filteredItems = [...this.items];
-        this.updatePageItems();
-        this.loaderService.hide(); // Hide loader after items are loaded
+      this.items = items.map(this.mapItem);
+      this.totalItems = this.items.length;
+      this.filteredItems = [...this.items];
+      this.updatePageItems();
+      this.loaderService.hide(); // Hide loader after items are loaded
     }, error => {
-        this.loaderService.hide(); // Hide loader if there's an error
-        console.error('Error loading items:', error);
+      this.loaderService.hide(); // Hide loader if there's an error
+      console.error('Error loading items:', error);
     });
   }
 
@@ -302,6 +307,16 @@ export class ListItemsComponent implements OnInit {
     return Math.ceil(this.totalItems / this.itemsPerPage);
   }
 
+  // New method to download items based on selected format
+  downloadItems(): void {
+    if (this.selectedFormat === 'excel') {
+      this.downloadExcel();
+    } else if (this.selectedFormat === 'pdf') {
+      this.downloadPDF();
+    }
+  }
+
+  // Existing method to download Excel
   downloadExcel(): void {
     const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(this.filteredItems.map(item => ({
       Name: item.name,
@@ -312,6 +327,32 @@ export class ListItemsComponent implements OnInit {
     })));
     const workbook: XLSX.WorkBook = { Sheets: { 'Items': worksheet }, SheetNames: ['Items'] };
     XLSX.writeFile(workbook, 'items_list.xlsx');
+  }
+
+  // New method to download PDF
+  downloadPDF(): void {
+    const doc = new jsPDF();
+    const tableColumnHeaders = ['Name', 'Date of Birth', 'Gender', 'Email', 'Phone Numbers'];
+    const tableRows = this.filteredItems.map(item => [
+      item.name,
+      item.dob,
+      item.gender,
+      item.email,
+      item.phoneNumber.join(', ')
+    ]);
+
+    // Adding the title
+    doc.text('List of Items', 14, 16);
+
+    // Adding the table
+    (doc as any).autoTable({
+      head: [tableColumnHeaders],
+      body: tableRows,
+      startY: 20
+    });
+
+    // Save the generated PDF
+    doc.save('items_list.pdf');
   }
 }
 
