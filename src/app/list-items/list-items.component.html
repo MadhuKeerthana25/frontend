@@ -2,81 +2,6 @@
 <div class="list-container">
   <h3>Items</h3>
 
-  
-  <input
-    type="text"
-    [(ngModel)]="searchTerm"
-    (input)="filterItems()"
-    placeholder="Search items..."
-    style="width: 100%; padding: 10px; margin-bottom: 20px; box-sizing: border-box;"
-  />
-
-  
-  <button (click)="deleteSelectedItems()" [disabled]="selectedItems.length === 0" class="bulk-delete-button">
-    Delete Selected Items
-  </button>
-
-
-  <div class="export-options">
-    <select [(ngModel)]="selectedFormat">
-      <option value="excel">Excel</option>
-      <option value="pdf">PDF</option>
-    </select>
-    <button (click)="downloadItems()">Download Items</button>
-  </div>
-
-  <table>
-    <thead>
-      <tr>
-        <th><input type="checkbox" (change)="toggleSelectAll($event)" /></th>
-        <th>Name</th>
-        <th>Date of Birth</th>
-        <th>Gender</th>
-        <th>Email</th>
-        <th>Phone Numbers</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody *ngIf="filteredItems">
-      <tr *ngFor="let item of filteredItems; let i = index">
-        <td><input type="checkbox" [(ngModel)]="item.selected" (change)="onItemSelect(item)" /></td>
-        <td>{{ item.name }}</td>
-        <td>{{ item.dob }}</td>
-        <td>{{ item.gender }}</td>
-        <td>{{ item.email }}</td>
-        <td>
-          <ul>
-            <li *ngFor="let phone of item.phoneNumber">{{ phone }}</li>
-          </ul>
-        </td>
-        <td>
-          <button *ngIf="item.id !== undefined" (click)="editItem(item.id)" class="icon-button edit-button" title="Edit">
-            ✎ 
-          </button>
-          <button *ngIf="item.id !== undefined" (click)="deleteItem(item.id)" class="icon-button delete-button" title="Delete">
-            🗑️ 
-          </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-
-  <div class="pagination">
-    <button (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 1">Previous</button>
-    <span>Page {{ currentPage }} of {{ totalPages }}</span>
-    <button (click)="goToPage(currentPage + 1)" [disabled]="currentPage === totalPages">Next</button>
-  </div>
-</div>
-
-
-
- -->
-
-
- <app-header></app-header>
-<div class="list-container">
-  <h3>Items</h3>
-
   <input
     type="text"
     [(ngModel)]="searchTerm"
@@ -129,6 +54,75 @@
           </button>
           <button *ngIf="item.id !== undefined" (click)="deleteItem(item.id)" class="icon-button delete-button" title="Delete">
             🗑️ 
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="pagination">
+    <button (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 1">Previous</button>
+    <span>Page {{ currentPage }} of {{ totalPages }}</span>
+    <button (click)="goToPage(currentPage + 1)" [disabled]="currentPage === totalPages">Next</button>
+  </div>
+</div> -->
+
+<app-header></app-header>
+<div class="list-container">
+  <h3>Items</h3>
+
+  <input
+    type="text"
+    [(ngModel)]="searchTerm"
+    (input)="filterItems()"
+    placeholder="Search items..."
+    style="width: 100%; padding: 10px; margin-bottom: 20px; box-sizing: border-box;"
+  />
+
+  <div class="action-buttons">
+    <button (click)="deleteSelectedItems()" [disabled]="selectedItems.length === 0" class="bulk-delete-button">
+      Delete Selected Items
+    </button>
+
+    <div class="export-options">
+      <select [(ngModel)]="selectedFormat">
+        <option value="excel">Excel</option>
+        <option value="pdf">PDF</option>
+      </select>
+      <button (click)="downloadItems()">Download Items</button>
+    </div>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th><input type="checkbox" (change)="toggleSelectAll($event)" /></th>
+        <th>Name</th>
+        <th>Date of Birth</th>
+        <th>Gender</th>
+        <th>Email</th>
+        <th>Phone Numbers</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="filteredItems">
+      <tr *ngFor="let item of filteredItems; let i = index">
+        <td><input type="checkbox" [(ngModel)]="item.selected" (change)="onItemSelect(item)" /></td>
+        <td>{{ item.name }}</td>
+        <td>{{ item.dob }}</td>
+        <td>{{ item.gender }}</td>
+        <td>{{ item.email }}</td>
+        <td>
+          <ul>
+            <li *ngFor="let phone of item.phoneNumber">{{ phone }}</li>
+          </ul>
+        </td>
+        <td>
+          <button *ngIf="item.id !== undefined" (click)="editItem(item.id)" class="icon-button edit-button" title="Edit">
+            ✎
+          </button>
+          <button *ngIf="item.id !== undefined" (click)="deleteItem(item.id)" class="icon-button delete-button" title="Delete">
+            🗑️
           </button>
         </td>
       </tr>

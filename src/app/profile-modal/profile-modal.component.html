@@ -1,9 +1,9 @@
-   <div class="modal" *ngIf="isVisible">
-    <div class="modal-content">
-      <span class="close" (click)="closeModal()">&times;</span>
-      <h2>User Profile</h2>
-      <p><strong>Name:</strong> {{ userDetails?.username }}</p>
-      <p><strong>Role:</strong> {{ userDetails?.roles[0] }}</p>
-    </div>
+<div class="modal" *ngIf="isVisible">
+  <div class="modal-content">
+    <span class="close" (click)="closeModal()">&times;</span>
+    <h2>User Profile</h2>
+    <p><strong>Name:</strong> {{ userDetails?.username }}</p>
+    <p><strong>Role:</strong> {{ userDetails?.roles?.[0] }}</p>
+    <p *ngIf="userDetails?.roles?.length"><strong>Role:</strong> {{ userDetails?.roles?.[0] }}</p>
   </div>
-  
+</div>

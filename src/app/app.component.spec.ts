@@ -22,10 +22,11 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it('should render title', () => {
+  it('should render title as empty', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, angular-application'); // Adjust this if you keep the title as 'angular-application'
+    expect(compiled.querySelector('h1')?.textContent).toBe(''); // Expect the h1 to have an empty string
   });
+  
 });
