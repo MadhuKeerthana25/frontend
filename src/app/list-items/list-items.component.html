@@ -50,10 +50,10 @@
         </td>
         <td>
           <button *ngIf="item.id !== undefined" (click)="editItem(item.id)" class="icon-button edit-button" title="Edit">
-            ✎ 
+            ✎
           </button>
           <button *ngIf="item.id !== undefined" (click)="deleteItem(item.id)" class="icon-button delete-button" title="Delete">
-            🗑️ 
+            🗑️
           </button>
         </td>
       </tr>
@@ -67,7 +67,12 @@
   </div>
 </div> -->
 
-<app-header></app-header>
+
+
+<!-- 1st code for custom table -->
+
+<!-- <app-header></app-header>
+
 <div class="list-container">
   <h3>Items</h3>
 
@@ -93,45 +98,76 @@
     </div>
   </div>
 
-  <table>
-    <thead>
-      <tr>
-        <th><input type="checkbox" (change)="toggleSelectAll($event)" /></th>
-        <th>Name</th>
-        <th>Date of Birth</th>
-        <th>Gender</th>
-        <th>Email</th>
-        <th>Phone Numbers</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody *ngIf="filteredItems">
-      <tr *ngFor="let item of filteredItems; let i = index">
-        <td><input type="checkbox" [(ngModel)]="item.selected" (change)="onItemSelect(item)" /></td>
-        <td>{{ item.name }}</td>
-        <td>{{ item.dob }}</td>
-        <td>{{ item.gender }}</td>
-        <td>{{ item.email }}</td>
-        <td>
-          <ul>
-            <li *ngFor="let phone of item.phoneNumber">{{ phone }}</li>
-          </ul>
-        </td>
-        <td>
-          <button *ngIf="item.id !== undefined" (click)="editItem(item.id)" class="icon-button edit-button" title="Edit">
-            ✎
-          </button>
-          <button *ngIf="item.id !== undefined" (click)="deleteItem(item.id)" class="icon-button delete-button" title="Delete">
-            🗑️
-          </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <app-custom-table
+  [columns]="columns"
+  [items]="filteredItems"
+  [allowBulkDelete]="false"
+  (edit)="editItem($event)"
+  (delete)="deleteItem($event)"
+  (bulkDelete)="deleteSelectedItems()"
+  (download)="downloadItems()"
+></app-custom-table>
+</div> -->
 
-  <div class="pagination">
-    <button (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 1">Previous</button>
-    <span>Page {{ currentPage }} of {{ totalPages }}</span>
-    <button (click)="goToPage(currentPage + 1)" [disabled]="currentPage === totalPages">Next</button>
+
+
+<!-- 2nd code for custom table -->
+<!-- 
+<div class="list-container">
+  <h3>Items</h3>
+
+  <input
+    type="text"
+    [(ngModel)]="searchTerm"
+    (input)="filterItems()"
+    placeholder="Search items..."
+    style="width: 100%; padding: 10px; margin-bottom: 20px; box-sizing: border-box;"
+  />
+
+  <div class="action-buttons">
+    <button (click)="deleteSelectedItems()" [disabled]="selectedItems.length === 0" class="bulk-delete-button">
+      Delete Selected Items
+    </button>
+
+    <div class="export-options">
+      <select [(ngModel)]="selectedFormat">
+        <option value="excel">Excel</option>
+        <option value="pdf">PDF</option>
+      </select>
+      <button (click)="downloadItems(selectedFormat)">Download Items</button>
+    </div>
   </div>
+
+  <app-custom-table
+    [columns]="columns"
+    [items]="filteredItems"
+    [allowBulkDelete]="true"
+    (edit)="editItem($event)"
+    (delete)="deleteItem($event)"
+  ></app-custom-table>
 </div>
+ -->
+
+
+
+
+
+
+<!-- 3rd code for custom table -->
+
+<app-header></app-header> <br>
+
+<app-custom-table
+  [items]="items"
+  [loading]="loading"
+  [searchQuery]="searchQuery"
+  [displayedFields]="['name', 'dateOfBirth', 'gender', 'emailId', 'phoneNumbers']"
+  (editItem)="onEditItem($event)"
+  (deleteItem)="onDeleteItem($event)"
+  (bulkDeleteItems)="onBulkDeleteItems($event)"
+  (searchChanged)="onSearchChanged($event)"
+  (selectAllItems)="onSelectAllItems($event)"
+  (selectItem)="onSelectItem($event)"
+  (downloadItems)="onDownloadItems($event)"
+  (paginate)="onPaginate($event)">
+</app-custom-table>

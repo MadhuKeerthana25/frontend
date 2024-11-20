@@ -41,7 +41,6 @@ export class SignupComponent {
   onSignup() {
     const signupData = {
       username: this.name,
-      role: this.role,
       password: this.password
     };
 

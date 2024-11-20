@@ -1,5 +1,5 @@
-/* Container styling with background */
-.list-container {
+/* Container background and form styling */
+.table-container {
   max-width: 800px;
   margin: 40px auto;
   padding: 30px;
@@ -10,28 +10,17 @@
   background: linear-gradient(to right, #6a11cb, #2575fc); /* Matching gradient */
 }
 
-.list-container::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  border-radius: 12px;
-  z-index: 1;
-}
-
-.list-container * {
-  position: relative;
-  z-index: 2;
-}
-
-.list-container h3 {
+/* Loader styling */
+.loader {
   text-align: center;
-  margin-bottom: 24px;
-  font-size: 24px;
-  font-weight: 700;
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
 }
 
 /* Table styling */
@@ -39,7 +28,7 @@
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 24px;
-  background: rgba(106, 17, 203, 0.85);
+  background: rgba(106, 17, 203, 0.85); /* Adjusted color for similarity */
   border-radius: 8px;
   overflow: hidden;
 }
@@ -54,7 +43,7 @@
 }
 
 .table th {
-  background-color: rgba(51, 51, 51, 0.9);
+  background-color: rgba(51, 51, 51, 0.9); /* Slight transparency */
   font-weight: 600;
 }
 
@@ -67,39 +56,56 @@
   transition: background-color 0.3s ease;
 }
 
-/* Pagination buttons */
-.pagination button {
+/* Action buttons */
+.action-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.bulk-delete-button,
+button {
   padding: 10px 16px;
-  border: none;
   background-color: #3498db;
   color: white;
+  border: none;
   border-radius: 6px;
   font-weight: 600;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
-  margin: 0 5px;
 }
 
-.pagination button:hover {
-  background-color: #2980b9;
-  transform: scale(1.05);
-}
-
-.pagination button:disabled {
+.bulk-delete-button:disabled {
   background-color: #7f8c8d;
   cursor: not-allowed;
 }
 
-.pagination span {
-  font-size: 14px;
-  color: white;
-  margin: 0 10px;
+.bulk-delete-button:hover:not(:disabled),
+button:hover {
+  background-color: #2980b9;
+  transform: scale(1.05);
+}
+
+/* Specific style for Edit button */
+.edit-button {
+  background-color: #462ecc;
+}
+
+.edit-button:hover {
+  background-color: #27aea5;
 }
 
 /* Responsive adjustments */
 @media (max-width: 600px) {
-  .list-container {
-    margin: 20px;
-    padding: 20px;
+  .table th,
+  .table td {
+    font-size: 12px;
+  }
+
+  .bulk-delete-button,
+  button {
+    padding: 8px;
+    font-size: 12px;
   }
 }

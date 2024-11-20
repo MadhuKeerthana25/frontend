@@ -142,7 +142,7 @@ describe('ListItemsComponent', () => {
   it('should navigate to add-item on successful edit', () => {
     const id = 1;
 
-    component.editItem(id); // Call the method with a valid ID
+    component.onEditItem; // Call the method with a valid ID
 
     expect(loaderService.show).toHaveBeenCalled(); // Ensure loader is shown
     expect(itemService.getItemById).toHaveBeenCalledWith(id); // Ensure getItemById was called with the correct ID
@@ -161,7 +161,7 @@ describe('ListItemsComponent', () => {
 
     spyOn(console, 'error'); // Spy on console.error to check if the error was logged
 
-    component.editItem(id); // Call the method with a valid ID
+    component.onEditItem(id); // Call the method with a valid ID
 
     expect(loaderService.show).toHaveBeenCalled(); // Ensure loader is shown
 
@@ -180,7 +180,7 @@ describe('ListItemsComponent', () => {
     dataService.deleteItem.and.returnValue(of(undefined)); // Mock a successful delete operation returning void
     spyOn(component, 'loadItems'); // Spy on loadItems to ensure it's called after deletion
   
-    component.deleteItem(id); // Call the deleteItem method
+    component.onDeleteItem(id); // Call the deleteItem method
   
     expect(loaderService.show).toHaveBeenCalled(); // Ensure loader is shown
     expect(dataService.deleteItem).toHaveBeenCalledWith(id); // Ensure deleteItem was called with the correct ID
@@ -311,7 +311,7 @@ describe('ListItemsComponent', () => {
 
     spyOn(console, 'error'); // Spy on console.error to ensure error logging
 
-    component.deleteItem(id); // Call the deleteItem method
+    component.onDeleteItem(id); // Call the deleteItem method
 
     expect(loaderService.show).toHaveBeenCalled(); // Ensure loader is shown
     expect(dataService.deleteItem).toHaveBeenCalledWith(id); // Ensure deleteItem was called with the correct ID

@@ -14,6 +14,7 @@ import { ProfileComponent } from './profile/profile.component';
 const routes: Routes = [
   { path: 'welcome', component: WelcomeComponent, canActivate: [AuthGuard] },
   { path: 'add-item', component: AddItemComponent, canActivate: [RoleGuard], data: { roles: ['ADMIN'] } },
+  { path: 'add-item/:id', component: AddItemComponent, canActivate: [RoleGuard], data: { roles: ['ADMIN'] } },
   { path: 'list-items', component: ListItemsComponent, canActivate: [RoleGuard], data: { roles: ['ADMIN', 'USER'] } },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },

@@ -1,10 +1,17 @@
 /* Styles for the signup page */
 
+.header-title {
+  text-align: center;
+  font-size: 2rem; /* Adjust size as needed */
+  margin-bottom: 1.5rem;
+  color: #9b59b6; /* Optional: Color to match the purple theme */
+}
+
 form {
     max-width: 400px;
     margin: 0 auto;
     padding: 1rem;
-    background: #0d0d0d;
+    background: #dfe3e4;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   }

@@ -92,7 +92,7 @@ header nav a {
 /* Add margin between navigation links */
 nav a {
   margin-right: 20px; /* Adds 20px of space between the links */
-  color: #fff; /* Ensure the text is white */
+  color: black; /* Ensure the text is white */
   text-decoration: none; /* Remove the underline */
 }
 
@@ -105,7 +105,7 @@ nav a:hover {
 @media (max-width: 768px) {
   header {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
   }
 
   header nav {

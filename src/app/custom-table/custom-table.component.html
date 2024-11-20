@@ -1,0 +1,55 @@
+   <div *ngIf="loading" class="loader">Loading...</div>
+<div *ngIf="!loading">
+  <input type="text" [(ngModel)]="searchQuery" (input)="onSearchChanged(searchQuery)" placeholder="Search items..." />
+  
+  <div class="action-buttons">
+    <button (click)="onBulkDelete()" class="bulk-delete-button" [disabled]="selectedItems.size === 0">
+      Delete Selected Items
+    </button>
+    <div class="export-options">
+      <select [(ngModel)]="selectedFormat">
+        <option value="excel">Excel</option>
+        <option value="pdf">PDF</option>
+      </select>
+      <button (click)="onDownload()">Download</button>
+    </div>
+  </div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>
+          <input type="checkbox" (change)="onSelectAllItems($event)" [checked]="isAllItemsSelected()" />
+        </th>
+        <th *ngIf="isFieldDisplayed('name')">Name</th>
+        <th *ngIf="isFieldDisplayed('dateOfBirth')">Date of Birth</th>
+        <th *ngIf="isFieldDisplayed('gender')">Gender</th>
+        <th *ngIf="isFieldDisplayed('emailId')">Email</th>
+        <th *ngIf="isFieldDisplayed('phoneNumbers')">Phone Number</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of filteredItems">
+        <td>
+          <input type="checkbox" [checked]="selectedItems.has(item.id ? item.id : 0)" (change)="onSelectItem(item.id ? item.id : 0)" />
+        </td>
+        <td *ngIf="isFieldDisplayed('name')">{{ item.name }}</td>
+        <td *ngIf="isFieldDisplayed('dateOfBirth')">{{ item.dateOfBirth }}</td>
+        <td *ngIf="isFieldDisplayed('gender')">{{ item.gender }}</td>
+        <td *ngIf="isFieldDisplayed('emailId')">{{ item.emailId }}</td> 
+        <td *ngIf="isFieldDisplayed('phoneNumbers')">{{ getPhoneNumbers(item) }}</td>
+        <td>
+          <button *ngIf="deleteItem.observers.length > 0" (click)="onDeleteItem(item.id ? item.id : 0)">Delete</button>
+          <button *ngIf="editItem.observers.length > 0" class="edit-button" (click)="onEditItem(item)">Edit</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="pagination-controls">
+    <button (click)="onPageChange(currentPage - 1)" [disabled]="currentPage <= 1">Previous</button>
+    <span>Page {{ currentPage }} of {{ totalPages }}</span>
+    <button (click)="onPageChange(currentPage + 1)" [disabled]="currentPage >= totalPages">Next</button>
+  </div>
+</div>

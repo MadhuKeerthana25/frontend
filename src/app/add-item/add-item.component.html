@@ -2,7 +2,7 @@
 <div class="form-container">
     <h3>{{ editIndex !== null ? 'Edit Item' : 'Add Item' }}</h3>
   
-    <form #itemForm="ngForm" (ngSubmit)="saveItem(itemForm)">
+    <form #itemForm="ngForm" (ngSubmit)="saveItem()">
   
       <label>Name:</label>
       <input [(ngModel)]="name" name="name" type="text" placeholder="Enter name" required>
@@ -31,3 +31,6 @@
     </form>
   </div>
   
+
+
+   

@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { AddItemComponent } from './add-item/add-item.component';
 import { HeaderComponent } from './header/header.component';
 import { ListItemsComponent } from './list-items/list-items.component';
+import { CustomTableComponent } from './custom-table/custom-table.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
@@ -26,6 +27,7 @@ import { LoaderComponent } from './loader/loader.component';
     AddItemComponent,
     HeaderComponent,
     ListItemsComponent,
+    CustomTableComponent,
     WelcomeComponent,
     LoginComponent,
     SignupComponent,
