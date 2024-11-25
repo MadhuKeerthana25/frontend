@@ -735,6 +735,7 @@ import * as XLSX from 'xlsx'; // For Excel export
 import jsPDF from 'jspdf'; // For PDF export
 import 'jspdf-autotable'; // For table formatting in PDF
 import { Router } from '@angular/router';
+import ExcelJS from 'exceljs';
 import { MyKommu1libComponent } from 'my-kommu1lib';
 
 @Component({

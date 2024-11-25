@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { of, throwError } from 'rxjs';
 import * as XLSX from 'xlsx';
+import ExcelJS from 'exceljs';
 
 // Mock services
 import { ItemService } from '../item.service';
